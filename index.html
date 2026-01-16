@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Yerli Malı Belgesi Doğrulama</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+html,body{
+  margin:0;
+  padding:0;
+  max-width:100%;
+  overflow-x:hidden;
+  font-family:Roboto,Arial,sans-serif;
+  background:#eef1f4;
+}
+
+:root{
+  --nav:#4b5a73;
+  --bg1:#2f356f;
+  --bg2:#0f1238;
+  --card:#ffffff;
+  --btn:#3f51b5;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar{
+  background:var(--nav);
+  height:60px;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  position:sticky;
+  top:0;
+  z-index:999;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+
+.nav-inner{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:22px;
+}
+
+/* LOGO AREA */
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+  font-weight:700;
+  font-size:22px;
+  letter-spacing:.5px;
+}
+
+.logo-area img{
+  height:36px;
+  width:auto;
+}
+
+/* MENU */
+
+.menu{
+  display:flex;
+  gap:28px;
+}
+
+/* Menü item + ikon hizalama */
+
+.menu a{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#fff;
+  font-weight:600;
+  font-size:22px;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.menu a:hover{
+  opacity:.75;
+}
+
+/* ===== HAMBURGER ===== */
+
+.hamburger{
+  display:none;
+  font-size:30px;
+  color:#fff;
+  cursor:pointer;
+  margin-left:auto;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  padding:70px 14px;
+}
+
+/* ===== CARD ===== */
+
+.outer{
+  max-width:920px;
+  margin:auto;
+  background:rgba(255,255,255,.18);
+  border-radius:16px;
+  padding:24px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:38px 44px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.card h1{
+  text-align:center;
+  font-size:18px;
+  margin-bottom:28px;
+}
+
+/* ===== INFO ===== */
+
+.row{
+  display:flex;
+  padding:12px 0;
+  border-bottom:1px solid #e5e5e5;
+  font-size:14px;
+}
+
+.label{
+  width:280px;
+  font-weight:600;
+}
+
+.value{
+  flex:1;
+}
+
+.active{
+  color:#1aa251;
+  font-weight:700;
+}
+
+/* ===== BUTTON ===== */
+
+.btn{
+  display:block;
+  margin-top:28px;
+  background:var(--btn);
+  color:#fff;
+  text-align:center;
+  padding:14px;
+  border-radius:30px;
+  font-weight:600;
+  font-size:14px;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 12px rgba(0,0,0,.25);
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+  background:var(--nav);
+  padding:46px 18px;
+  color:#fff;
+  font-size:13px;
+}
+
+.footer-wrap{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+}
+
+footer h4{
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+footer a{
+  color:#fff;
+  text-decoration:none;
+  line-height:1.6;
+  display:block;
+  margin-bottom:6px;
+}
+
+footer a:hover{
+  text-decoration:underline;
+}
+
+.copy{
+  margin-top:28px;
+  text-align:left;
+  font-size:12px;
+  opacity:.9;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+  .menu{
+    display:none;
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:var(--nav);
+    flex-direction:column;
+    padding:10px 0;
+  }
+
+  .menu.active{
+    display:flex;
+  }
+
+  .menu a{
+    padding:14px 18px;
+    font-size:18px;
+  }
+
+  .hamburger{
+    display:block;
+  }
+
+  .card{
+    padding:26px 22px;
+  }
+
+  .row{
+    flex-direction:column;
+  }
+
+  .label{
+    width:auto;
+    margin-bottom:4px;
+  }
+
+  .footer-wrap{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-inner">
+
+    <!-- LOGO + TEXT -->
+    <div class="logo-area">
+      <img src="logo.png" alt="Logo">
+      <span>Sanayi Bilgi Sistemi</span>
+    </div>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <!-- MENU -->
+  <div class="menu">
+
+  <a href="https://sanayi.org.tr" target="_blank">
+    🏠 Ana Sayfa
+  </a>
+
+  <a href="https://sanayi.org.tr" target="_blank">
+    🏢 Firma Girişi
+  </a>
+
+  <a href="https://sanayi.org.tr" target="_blank">
+    📊 Oda-Borsa
+  </a>
+
+  <a href="https://sanayi.org.tr" target="_blank">
+    🏛️ TOBB
+  </a>
+
+</div>
+
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="hero">
+  <div class="outer">
+    <div class="card">
+
+      <h1>YERLİ MALI BELGESİ DOĞRULAMA</h1>
+
+      <div class="row">
+        <div class="label">Rapor Durumu</div>
+        <div class="value active">Aktif</div>
+      </div>
+
+      <div class="row">
+        <div class="label">YMB Belge No</div>
+        <div class="value">2024121366137644</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Belgenin Geçerlilik Tarihi</div>
+        <div class="value">14/04/2026</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Oda Adı</div>
+        <div class="value">ADANA SANAYİ ODASI</div>
+      </div>
+
+      <a class="btn" href="06b34586-f9a4-4d1d-8687-9aae2f8a3abf.pdf" target="_blank">
+        BELGEYİ GÖRÜNTÜLE
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+<div class="footer-wrap">
+
+<!-- İLETİŞİM -->
+<div>
+  <h4>İLETİŞİM</h4>
+  <a>📍 Ankara Dumlupınar Bulvarı No:252</a>
+  <a href="mailto:sbsdestek@tobb.org.tr">✉ sbsdestek@tobb.org.tr</a>
+  <a href="tel:03122182980">📞 0312 218 29 80</a>
+</div>
+
+<!-- DUYURULAR -->
+<div>
+  <h4>DUYURULAR</h4>
+  <a href="https://www.tobb.org.tr/SanayiMudurlugu/Sayfalar/Duyurular.php" target="_blank">
+    TOBB Duyuruları
+  </a>
+</div>
+
+<!-- HAKKINDA -->
+<div>
+  <h4>HAKKINDA</h4>
+
+  <a href="https://www.tobb.org.tr/SanayiMudurlugu/Sayfalar/AnaSayfa.php" target="_blank">
+    Sanayi Kapasite Raporu
+  </a>
+
+  <a href="https://www.tobb.org.tr/SanayiMudurlugu/Sayfalar/YerliMaliBelgesi.php" target="_blank">
+    Yerli Malı Belgesi
+  </a>
+
+  <a href="https://tobb.org.tr/Sayfalar/KalitePolitikasi.php" target="_blank">
+    TOBB Kalite Politikası
+  </a>
+
+  <a href="https://tobb.org.tr/Sayfalar/Politikalar.php" target="_blank">
+    Bilgi Güvenliği ve KVKK Politikası
+  </a>
+</div>
+
+<!-- LINKLER -->
+<div>
+  <h4>LİNKLER</h4>
+
+  <a href="https://www.ticaretsicil.gov.tr/" target="_blank">
+    Türkiye Ticaret Sicili Gazetesi Firma Sorgulama
+  </a>
+
+  <a href="https://www.tobb2b.org.tr/" target="_blank">
+    Türkiye Fuar Takvimi ve Rehberi
+  </a>
+
+  <a href="https://www.tobb2b.org.tr/" target="_blank">
+    Dünyadan Gelen İthalat / İhracat Talepleri
+  </a>
+
+  <a href="https://www.tobb2b.org.tr/" target="_blank">
+    Türkiye'den İşbirliği Teklifleri
+  </a>
+
+  <a href="https://lonca.gov.tr/" target="_blank">
+    Sanayi Sicil Belgesi (LONCA)
+  </a>
+</div>
+
+</div>
+
+<div class="copy">
+© 2024 TOBB TÜRKİYE ODALAR VE BORSALAR BİRLİĞİ
+</div>
+
+</footer>
+
+<script>
+function toggleMenu(){
+  document.querySelector(".menu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
